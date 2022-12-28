@@ -1,6 +1,7 @@
+import aiohttp_jinja2
 from aiohttp import web
 
 
 async def index(request: web.Request) -> web.Response:
-    text = 'Hello, World!'
-    return web.Response(text=text)
+    context = {}
+    return await aiohttp_jinja2.render_template_async('core/index.html', request, context)

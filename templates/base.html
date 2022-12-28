@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}AIOHTTP{% endblock %}</title>
+    </head>
+    <body class="body">
+        <header class="header">
+            {% block header %}
+                {% include 'includes/header.html' %}
+            {% endblock %}
+        </header>
+
+        <main class="main">
+            {% block main %}
+            {% endblock %}
+        </main>
+
+        <footer class="footer">
+            {% block footer %}
+                {% include 'includes/footer.html' %}
+            {% endblock %}
+        </footer>
+    </body>
+</html>
