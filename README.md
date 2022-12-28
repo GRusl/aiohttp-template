@@ -5,7 +5,7 @@ Understandable AIOHTTP template
 ## Opportunities
 
 * jinja2
-* ~~[tortoise-orm](https://tortoise.github.io) as a database library~~ **(⚠ in development)**
+* [tortoise-orm](https://tortoise.github.io) as a database library
 
 ## Usage
 
