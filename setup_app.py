@@ -4,15 +4,21 @@ import aiohttp_jinja2
 from aiohttp import web
 
 
-# В этой функции производится настройка url-путей для всего приложения
-def setup_routes(app: web.Application, apps: list[str]) -> None:
-    for app_name in apps:
+def setup_routes(app: web.Application, settings) -> None:
+    """
+    In this function, url paths are configured for the entire application
+    :param app: Application Object;
+    :param settings: List of application names;
+    :return: None;
+    """
+    app.router.add_static(settings.static_url, path=settings.static_path, name='static')
+    for app_name in settings.apps:
         i = __import__(f'app.{app_name}.routes', fromlist=[''])
         i.setup_routes(app)
 
 
 def setup_external_libraries(app: web.Application, templates_path: str) -> None:
-    # Настраиваем шаблонизатор
+    # Setting up jinja2
     aiohttp_jinja2.setup(
         app,
         enable_async=True,
@@ -35,5 +41,5 @@ def setup_external_libraries(app: web.Application, templates_path: str) -> None:
 
 
 def setup_app(app: web.Application, settings) -> None:
-    setup_external_libraries(app, settings.templates_path)  # Настройки внешних библиотек
-    setup_routes(app, settings.apps)  # Настройки роутера приложения
+    setup_external_libraries(app, settings.template_path)  # External Library Settings
+    setup_routes(app, settings)  # Application Router Settings

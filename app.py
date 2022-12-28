@@ -3,16 +3,16 @@ import asyncio
 from aiohttp import web
 
 import settings
-from __init__ import setup_app
+from setup_app import setup_app
 
 
 def main() -> None:
     loop = asyncio.new_event_loop()
 
-    app = web.Application()  # Создаем веб-сервер
-    setup_app(app, settings)  # Настраиваем приложение
+    app = web.Application()  # Creating a web server
+    setup_app(app, settings)  # Setting up the application
 
-    web.run_app(app, loop=loop)  # Запускаем приложение
+    web.run_app(app, loop=loop)  # Launching the application
 
 
 if __name__ == '__main__':
