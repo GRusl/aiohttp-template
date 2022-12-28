@@ -1,7 +1,10 @@
+import os
+
 import jinja2
 import aiohttp_jinja2
 
 from aiohttp import web
+from tortoise.contrib.aiohttp import register_tortoise
 
 
 def setup_routes(app: web.Application, settings) -> None:
@@ -28,16 +31,18 @@ def setup_external_libraries(app: web.Application, settings) -> None:
             aiohttp_jinja2.request_processor
         ]
     )
-    # Настройка tortoise
-    # register_tortoise(
-    #     app,
-    #     db_url='sqlite://main.sqlite3',
-    #     modules={
-    #         'abbreviator': ['app.abbreviator.models'],
-    #         'users': ['app.users.models'],
-    #     },
-    #     generate_schemas=True,
-    # )
+    # Register tortoise-orm
+    if any([os.path.exists(f'./app/{app_name}/models.py') for app_name in settings.apps]):
+        # If there are models in the applications
+        register_tortoise(
+            app,
+            db_url='sqlite://database.sqlite3',
+            modules={
+                app_name: [f'app.{app_name}.models']
+                for app_name in settings.apps if os.path.exists(f'./app/{app_name}/models.py')
+            },
+            generate_schemas=True,
+        )
 
 
 def setup_app(app: web.Application, settings) -> None:
