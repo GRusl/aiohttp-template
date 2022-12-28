@@ -4,8 +4,8 @@ Understandable AIOHTTP template
 
 ## Opportunities
 
-* jinja2
-* [tortoise-orm](https://tortoise.github.io) as a database library
+* 📃 jinja2
+* 🐢 [tortoise-orm](https://tortoise.github.io) as a database library
 
 ## Usage
 
@@ -14,7 +14,8 @@ Understandable AIOHTTP template
 
 ## Run project
 
-Run project via `python app.py`
+* Run project via `python app.py`
+* Open [http://localhost:8080](http://localhost:8080)
 
 ## Project structure
 

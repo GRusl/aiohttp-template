@@ -27,7 +27,6 @@ def setup_external_libraries(app: web.Application, settings) -> None:
         enable_async=True,
         loader=jinja2.FileSystemLoader(settings.template_path),
         context_processors=[
-            {'static': settings.static_url},
             aiohttp_jinja2.request_processor
         ]
     )
