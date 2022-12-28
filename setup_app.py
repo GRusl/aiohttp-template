@@ -17,14 +17,14 @@ def setup_routes(app: web.Application, settings) -> None:
         i.setup_routes(app)
 
 
-def setup_external_libraries(app: web.Application, templates_path: str) -> None:
+def setup_external_libraries(app: web.Application, settings) -> None:
     # Setting up jinja2
     aiohttp_jinja2.setup(
         app,
         enable_async=True,
-        loader=jinja2.FileSystemLoader(templates_path),
+        loader=jinja2.FileSystemLoader(settings.template_path),
         context_processors=[
-            # user_ctx_processor,
+            {'static': settings.static_url},
             aiohttp_jinja2.request_processor
         ]
     )
@@ -41,5 +41,5 @@ def setup_external_libraries(app: web.Application, templates_path: str) -> None:
 
 
 def setup_app(app: web.Application, settings) -> None:
-    setup_external_libraries(app, settings.template_path)  # External Library Settings
+    setup_external_libraries(app, settings)  # External Library Settings
     setup_routes(app, settings)  # Application Router Settings

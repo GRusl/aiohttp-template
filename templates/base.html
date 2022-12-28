@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="html" lang="en">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}AIOHTTP{% endblock %}</title>
 
         <link rel="shortcut icon" href="/static/favicon.ico">
+
+        {% block head %}{% endblock %}
     </head>
     <body class="body">
         <header class="header">
@@ -14,8 +16,7 @@
         </header>
 
         <main class="main">
-            {% block main %}
-            {% endblock %}
+            {% block main %}{% endblock %}
         </main>
 
         <footer class="footer">
