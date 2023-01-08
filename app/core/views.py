@@ -1,3 +1,5 @@
+# Here you can write request handlers
+
 import aiohttp_jinja2
 from aiohttp import web
 

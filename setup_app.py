@@ -35,7 +35,7 @@ def setup_external_libraries(app: web.Application, settings) -> None:
         # If there are models in the applications
         register_tortoise(
             app,
-            db_url='sqlite://database.sqlite3',
+            db_url=settings.db_url,
             modules={
                 app_name: [f'app.{app_name}.models']
                 for app_name in settings.apps if os.path.exists(f'./app/{app_name}/models.py')

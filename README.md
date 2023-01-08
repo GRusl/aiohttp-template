@@ -4,8 +4,11 @@ Understandable AIOHTTP template
 
 ## Opportunities
 
-* 📃 jinja2
+* 📃 [jinja2](https://github.com/aio-libs/aiohttp-jinja2)
 * 🐢 [tortoise-orm](https://tortoise.github.io) as a database library
+* 🧱 App structure
+* ⚙ Simple setup
+* 🔮 template / static
 
 ## Usage
 
@@ -19,12 +22,11 @@ Understandable AIOHTTP template
 
 ## Project structure
 
-```
-your_project
+```bash
+your_project_name
 ├── app  # Folder with projects
 │   ├── __init__.py
 │   └── core  # Main app (use it as an application template)
-│       ├── __init__.py
 │       ├── views.py  # Main views (for core app)
 │       └── router.py  # Main router (for core app)
 ├── setup_app.py  # Configuring components
@@ -44,3 +46,6 @@ your_project
     └── favicon.ico
 ```
 
+# Feedback
+
+☎ You can [write](https://t.me/Gruslans) me to suggest ideas for improvement or correction
